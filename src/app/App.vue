@@ -1,9 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import HeaderBase from "@/components/HeaderBase";
+</script>
 
 <template>
-  <div class="container">
-    <h1>Жилфонд</h1>
-  </div>
+  <HeaderBase />
 </template>
 
 <style lang="scss" scoped></style>
