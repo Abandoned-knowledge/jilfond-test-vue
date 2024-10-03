@@ -1,19 +1,26 @@
 <script setup lang="ts">
   import UserCard from "@/shared/ui/UserCard";
-  import axios from "axios";
-  const { data } = await axios("https://jsonplaceholder.typicode.com/users");
+  import { useStore } from "vuex";
+
+  const store = useStore();
+
+  function handleClick(event: Event, userObject: object) {
+    const userCard = event.currentTarget as HTMLDivElement;
+    const allUserCards = document.getElementsByClassName("user-card") as HTMLCollection;
+    Array.from(allUserCards).forEach((card) => card.classList.remove("active"));
+    userCard.classList.add("active");
+    store.commit("setCurrentUser", userObject);
+  }
 </script>
 
 <template>
   <div class="cards">
     <UserCard
-      email="test@gmail.com"
-      username="username"
-    />
-    <UserCard
-      email="test@gmail.com"
-      username="username"
-      class="active"
+      v-for="user in store.state.users"
+      @click="handleClick($event, user)"
+      :email="user.email"
+      :username="user.username"
+      :key="user.id"
     />
   </div>
 </template>

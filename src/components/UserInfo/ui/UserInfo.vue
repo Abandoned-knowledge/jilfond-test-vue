@@ -1,8 +1,10 @@
 <script setup lang="ts">
-  import { ref } from "vue";
+  import { computed } from "vue";
   import UserInfoContent from "./UserInfoContent.vue";
   import UserInfoEmpty from "./UserInfoEmpty.vue";
-  const isEmpty = ref<boolean>(true);
+  import { useStore } from "vuex";
+  const store = useStore();
+  const isEmpty = computed(() => store.state.currentUser == null);
 </script>
 
 <template>

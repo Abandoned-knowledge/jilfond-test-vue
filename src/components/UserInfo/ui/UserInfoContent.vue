@@ -1,4 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import { useStore } from "vuex";
+  const store = useStore();
+</script>
 
 <template>
   <section class="user-info">
@@ -7,30 +10,22 @@
     />
     <div class="user-info__content">
       <div class="user-info__data">
-        <p class="fw-bold">Ervin Howell</p>
+        <p class="fw-bold">{{ store.getters.currentUser.name }}</p>
         <small class="fw-bold">
           email:
-          <span class="fw-normal text-secondary">Shanna@melissa.tv</span>
+          <span class="fw-normal text-secondary">{{ store.getters.currentUser.email }}</span>
         </small>
 
         <small class="fw-bold">
           phone:
-          <span class="fw-normal text-secondary">010-692-6593 x09125</span>
+          <span class="fw-normal text-secondary">{{ store.getters.currentUser.phone }}</span>
         </small>
       </div>
 
       <div class="user-info__about">
         <p class="fw-bold">О себе</p>
         <small class="text-secondary">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia ipsa quos tenetur minima
-          tempora cupiditate rerum soluta. Sunt deleniti, at laborum incidunt facilis repudiandae
-          eum fuga quod iste possimus odio, odit aut ex obcaecati molestiae accusamus saepe quo,
-          eveniet tempore ea ratione repellat blanditiis accusantium necessitatibus. Recusandae
-          porro doloribus aliquid, temporibus, reprehenderit voluptate alias assumenda cum in,
-          laboriosam illo rerum dolore earum. Dolorum consectetur molestiae quidem sed debitis magni
-          harum sapiente, ad exercitationem suscipit autem recusandae, minima, rerum vitae saepe
-          iure sit aspernatur dolor est? Commodi beatae est quae, ad ducimus nam asperiores sunt
-          deserunt accusantium doloremque sint cumque quia?
+          {{ store.getters.currentUserAbout }}
         </small>
       </div>
     </div>

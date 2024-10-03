@@ -31,12 +31,15 @@
     img {
       width: 70px;
       aspect-ratio: 1;
-      border-right: 1px solid var(--block-color-active);
+      border-width: 1px;
+      border-color: transparent;
+      border-style: solid;
+      border-right-color: var(--block-color-active);
     }
     .user-card__data {
       width: 100%;
       height: 100%;
-      padding-left: 15px;
+      padding: 0px 15px;
       display: flex;
       flex-direction: column;
       gap: 5px;
@@ -46,7 +49,7 @@
 
   .user-card.active {
     img {
-      border: 1px solid var(--block-color-active);
+      border-color: var(--block-color-active);
     }
     .user-card__data {
       background-color: var(--block-color-active);
