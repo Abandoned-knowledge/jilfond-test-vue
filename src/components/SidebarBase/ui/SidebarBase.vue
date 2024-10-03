@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import InputBase from "@/shared/ui/InputBase";
+  import SidebarUserCards from "./SidebarUserCards.vue";
 </script>
 
 <template>
@@ -13,6 +14,9 @@
     <div class="sidebar__results">
       <p class="fw-semibold">Результаты</p>
       <small class="text-secondary">ничего не найдено</small>
+      <Suspense>
+        <SidebarUserCards />
+      </Suspense>
     </div>
   </aside>
 </template>
