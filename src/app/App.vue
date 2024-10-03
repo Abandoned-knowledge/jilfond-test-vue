@@ -1,12 +1,14 @@
 <script setup lang="ts">
   import HeaderBase from "@/components/HeaderBase";
   import SidebarBase from "@/components/SidebarBase";
+  import UserInfo from "@/components/UserInfo";
 </script>
 
 <template>
   <HeaderBase />
   <main class="main container">
     <SidebarBase />
+    <UserInfo />
   </main>
 </template>
 
@@ -17,5 +19,6 @@
     border-radius: 10px;
     overflow: hidden;
     margin-top: 30px;
+    display: flex;
   }
 </style>

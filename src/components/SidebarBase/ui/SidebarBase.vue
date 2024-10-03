@@ -22,7 +22,7 @@
     background-color: var(--block-color);
     height: 100%;
     width: fit-content;
-    padding: 20px;
+    padding: 30px 20px;
     border-right: 1px solid var(--block-color-separate);
     display: flex;
     flex-direction: column;
