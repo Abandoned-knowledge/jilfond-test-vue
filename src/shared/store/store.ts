@@ -1,6 +1,8 @@
 import axios from "axios";
 import { createStore } from "vuex";
 
+import { type IUser } from "./";
+
 const store = createStore({
   state: {
     allUsers: [],
@@ -19,27 +21,27 @@ const store = createStore({
       state.currentUser = null;
     },
     filterUsers(state, idOrUsername) {
-      let filteredArray = [];
+      let filteredArray: IUser[] = [];
 
       if (idOrUsername === "") {
         filteredArray = [];
       } else if (idOrUsername.includes(",")) {
         const array = idOrUsername.split(",");
-        const trimmedArray = array.map((el) => el.trim());
-        filteredArray = state.allUsers.filter(
+        const trimmedArray = array.map((el: string) => el.trim());
+        filteredArray = (state.allUsers as IUser[]).filter(
           (el) =>
             trimmedArray.includes(String(el.id)) ||
             trimmedArray.includes(el.username.toLowerCase()),
         );
       } else {
-        filteredArray = state.allUsers.filter((el) => {
+        filteredArray = (state.allUsers as IUser[]).filter((el) => {
           const id = el.id;
           const username = el.username.toLowerCase();
           return id == idOrUsername || username.includes(idOrUsername);
         });
       }
       setTimeout(() => {
-        state.filteredUsers = filteredArray;
+        (state.filteredUsers as IUser[]) = filteredArray;
       }, 500);
     },
   },
@@ -47,8 +49,7 @@ const store = createStore({
   actions: {
     async fetchAllUsers({ commit }) {
       const { data } = await axios(`https://jsonplaceholder.typicode.com/users`);
-
-      await commit("getUsers", data);
+      commit("getUsers", data);
     },
   },
 
@@ -57,7 +58,7 @@ const store = createStore({
       return state.currentUser;
     },
     currentUserAbout(state) {
-      const user = state.currentUser;
+      const user: IUser = state.currentUser! as IUser;
       const company = user.company;
       return `${company.name} ${company.catchPhrase} ${company.bs}`;
     },
