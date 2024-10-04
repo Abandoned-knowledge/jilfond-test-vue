@@ -9,7 +9,7 @@
 <template>
   <div class="user-card">
     <img
-      src="https://i.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-4ig97vv85vjb1.png?width=1280&format=png&auto=webp&s=7177756d1f393b6e093596d06e1ba539f723264b"
+      src="https://static.vecteezy.com/system/resources/previews/036/280/650/original/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-illustration-vector.jpg"
       alt=""
     />
     <div class="user-card__data">
@@ -21,6 +21,8 @@
 
 <style lang="scss" scoped>
   .user-card {
+    border: 1px solid;
+    border-color: transparent;
     box-shadow: 0px 0px 10px 0px #00000010;
     display: flex;
     border-radius: 10px;
@@ -31,10 +33,7 @@
     img {
       width: 70px;
       aspect-ratio: 1;
-      border-width: 1px;
-      border-color: transparent;
-      border-style: solid;
-      border-right-color: var(--block-color-active);
+      border-right: 1px solid var(--block-color-active);
     }
     .user-card__data {
       width: 100%;
@@ -47,6 +46,7 @@
   }
 
   .user-card.active {
+    border-color: var(--block-color-active);
     img {
       border-color: var(--block-color-active);
     }
