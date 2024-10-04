@@ -16,7 +16,7 @@
 <template>
   <div class="cards">
     <UserCard
-      v-for="user in store.state.users"
+      v-for="user in store.state.filteredUsers"
       @click="handleClick($event, user)"
       :email="user.email"
       :username="user.username"

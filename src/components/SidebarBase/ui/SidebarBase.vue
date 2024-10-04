@@ -1,31 +1,35 @@
 <script setup lang="ts">
-  import InputBase from "@/shared/ui/InputBase";
   import SidebarUserCards from "./SidebarUserCards.vue";
-  import { computed } from "vue";
+  import SidebarBaseSearch from "./SidebarBaseSearch.vue";
+  import SidebarBaseLoader from "./SidebarBaseLoader.vue";
+
+  import { computed, onMounted, ref, watch } from "vue";
   import { useStore } from "vuex";
 
   const store = useStore();
-
-  const isStoreEmpty = computed(() => (store.state.users as object[]).length <= 0);
+  const isSearching = ref<boolean>(false);
+  const isStoreEmpty = computed(() => store.state.filteredUsers.length > 0);
+  watch(store.state, () => {
+    if (store.state.filteredUsers.length >= 0) isSearching.value = false;
+  });
+  onMounted(() => store.dispatch("fetchAllUsers"));
 </script>
 
 <template>
   <aside class="sidebar">
     <p class="fw-semibold">Поиск сотрудников</p>
-    <InputBase
-      type="text"
-      placeholder="Введите Id или имя"
-    />
+    <SidebarBaseSearch @is-searching="(value) => (isSearching = value)" />
     <div class="sidebar__results">
       <p class="fw-semibold">Результаты</p>
-      <button @click="store.dispatch('fetchUsers')">click</button>
+      <SidebarBaseLoader v-if="isSearching" />
       <small
         class="text-secondary"
-        v-if="isStoreEmpty"
+        v-if="!isStoreEmpty && !isSearching"
       >
-        ничего не найдено
+        начните поиск
       </small>
-      <Suspense v-else>
+
+      <Suspense v-if="!isSearching && isStoreEmpty">
         <SidebarUserCards />
       </Suspense>
     </div>
