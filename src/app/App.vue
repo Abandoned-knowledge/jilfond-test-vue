@@ -20,5 +20,8 @@
     overflow: hidden;
     margin-top: 30px;
     display: flex;
+    @include mqs(lg) {
+      flex-direction: column;
+    }
   }
 </style>

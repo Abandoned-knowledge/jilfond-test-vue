@@ -1,0 +1,11 @@
+@mixin mqs($screen) {
+  @if $screen == md {
+    @media screen and (max-width: 768px) {
+      @content;
+    }
+  } @else if $screen == lg {
+    @media screen and (max-width: 992px) {
+      @content;
+    }
+  }
+}

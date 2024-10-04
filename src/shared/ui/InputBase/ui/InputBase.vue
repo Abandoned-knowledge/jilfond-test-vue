@@ -20,6 +20,10 @@
     border: 1.5px solid var(--secondary-color-lighten);
     border-radius: 10px;
 
+    @include mqs(lg) {
+      padding: 10px 80px 10px 15px;
+    }
+
     &::placeholder {
       color: var(--secondary-color);
       opacity: 1;

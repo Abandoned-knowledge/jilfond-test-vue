@@ -10,6 +10,9 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    @include mqs(lg) {
+      gap: 5px;
+    }
     &__circle {
       width: 16px;
       aspect-ratio: 1;
@@ -18,6 +21,10 @@
       border-style: solid;
       border-color: var(--block-color-active);
       border-top-color: var(--dark-color);
+
+      @include mqs(lg) {
+        width: 12px;
+      }
     }
   }
 

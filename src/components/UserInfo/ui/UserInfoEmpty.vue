@@ -11,5 +11,10 @@
     width: 100%;
     align-items: center;
     justify-content: center;
+
+    small {
+      text-align: center;
+      text-wrap: balance;
+    }
   }
 </style>

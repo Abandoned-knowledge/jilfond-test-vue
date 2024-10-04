@@ -42,10 +42,20 @@
     height: 100%;
     width: fit-content;
     padding: 30px 20px;
-    border-right: 1px solid var(--block-color-separate);
+    border-style: solid;
+    border-width: 1px;
+    border-color: transparent;
+    border-right-color: var(--block-color-separate);
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+    @include mqs(lg) {
+      border-right-color: transparent;
+      border-bottom-color: var(--block-color-separate);
+      width: 100%;
+      height: 300px;
+    }
 
     &__results {
       display: flex;

@@ -30,10 +30,20 @@
     cursor: pointer;
     height: fit-content;
 
+    @include mqs(lg) {
+      width: 45%;
+      flex-grow: 1;
+    }
+
     img {
       width: 70px;
       aspect-ratio: 1;
       border-right: 1px solid var(--block-color-active);
+      object-fit: cover;
+
+      @include mqs(lg) {
+        width: 50px;
+      }
     }
     .user-card__data {
       width: 100%;

@@ -4,19 +4,33 @@ span {
   margin: 0;
 }
 
+:where(h1, p, span) {
+  @extend .text-body;
+}
+
 h1 {
   color: var(--accent-color);
   font-size: 2rem;
   line-height: 39.01px;
+
+  @include mqs(lg) {
+    font-size: 1.5rem;
+  }
 }
 
 .text-body {
   font-size: 1rem;
   line-height: 22.4px;
+  @include mqs(lg) {
+    font-size: 0.8rem;
+  }
 }
 
 small,
 .text-small {
   font-size: 0.875rem;
   line-height: 17.07px;
+  @include mqs(lg) {
+    font-size: 0.6rem;
+  }
 }

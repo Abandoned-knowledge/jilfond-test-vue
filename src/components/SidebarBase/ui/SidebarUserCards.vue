@@ -30,5 +30,11 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    justify-content: center;
+
+    @include mqs(lg) {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
   }
 </style>
